@@ -3,15 +3,15 @@ let md5 = require('md5-node');
 let nowTime;
 let wxck;
 let articles = ["https://focus.youth.cn/article/s?signature=ZLAxJmwrdW82D634ZmJd3rfowwvZcvyyXzq1N9B05XEbOlQGnj&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=33131212&time=1614600696&app_version=2.0.2&sign=36e27092ca0aedb2eff0c769653e36c4",
-    "https://focus.youth.cn/article/s?signature=Mq8BYdozK36wyv5a2G2lnzsEdd3mcNKKdJB1nPDWpxVg2LZmRX&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=35944262&time=1614600707&app_version=2.0.2&sign=357e7ee1ca95f58bd85e65efdb617adf",
-    "https://focus.youth.cn/article/s?signature=yGdoJZx2eAwpjgl7OLwb9whZYYwJcgRRkW0a0PMbqvLnr9EKzR&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=35461908&time=1614600715&app_version=2.0.2&sign=2b8fa5214305c4bd478f2c387adcab91",
-    "https://focus.youth.cn/article/s?signature=BzyAgkjdGMQWRVY75DoYpjcxNNMOUvJJnNN4lK9opXE8ZO3mrb&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36543765&time=1614600724&app_version=2.0.2&sign=f12eed6999ec91f2a436018e1d2aeccc",
-    "https://focus.youth.cn/article/s?signature=VOZvBzYN5rkDxgX7YwgxKeUMJJNEiVdd0yb1L3yAP6WMnmlGK9&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36543744&time=1614600733&app_version=2.0.2&sign=73122ff78e1f5111ef8b033a4dde5597",
-    "https://focus.youth.cn/article/s?signature=KAn0BpeXzg3WkQRaAygmBGUzQQpYcXllAKbawr9G5ZDV6ldJ2N&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36543649&time=1614600743&app_version=2.0.2&sign=d9c2c7feed8875da18d245d05dd5ddb2",
-    "https://focus.youth.cn/article/s?signature=k5Bv92bmMjwJEOP78Ydg3NFYZZNRczQQ9v2agxne6rYKdpWVoR&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=29701182&time=1614600750&app_version=2.0.2&sign=5b393952a3dc0d0dce2866b575e47b51",
-    "https://focus.youth.cn/article/s?signature=qbBkjWwN2L3nP684eJwb3YsYAAVgcBxxEJr7gRyAEYpXDmeo0O&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36411553&time=1614600757&app_version=2.0.2&sign=3436b5de1d31bb707811d63821ebc17a",
-    "https://focus.youth.cn/article/s?signature=qbBkjWwN2L3nP684eNmKXZtYAAVgcBxxEJ37gRyAEYpXDmeo0O&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=29783690&time=1614600763&app_version=2.0.2&sign=87a966d7b95261aca2b03b23532a3155",
-    "https://focus.youth.cn/article/s?signature=ML5JYgKNrewq9QO4gM2ZWdU5LL9NTennkWbayGDn2Z0PAvkopB&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36537885&time=1614600778&app_version=2.0.2&sign=aae840fe6bdedfbb93c4eddb713ac57e"];
+"https://focus.youth.cn/article/s?signature=Mq8BYdozK36wyv5a2G2lnzsEdd3mcNKKdJB1nPDWpxVg2LZmRX&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=35944262&time=1614600707&app_version=2.0.2&sign=357e7ee1ca95f58bd85e65efdb617adf",
+"https://focus.youth.cn/article/s?signature=yGdoJZx2eAwpjgl7OLwb9whZYYwJcgRRkW0a0PMbqvLnr9EKzR&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=35461908&time=1614600715&app_version=2.0.2&sign=2b8fa5214305c4bd478f2c387adcab91",
+"https://focus.youth.cn/article/s?signature=BzyAgkjdGMQWRVY75DoYpjcxNNMOUvJJnNN4lK9opXE8ZO3mrb&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36543765&time=1614600724&app_version=2.0.2&sign=f12eed6999ec91f2a436018e1d2aeccc",
+"https://focus.youth.cn/article/s?signature=VOZvBzYN5rkDxgX7YwgxKeUMJJNEiVdd0yb1L3yAP6WMnmlGK9&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36543744&time=1614600733&app_version=2.0.2&sign=73122ff78e1f5111ef8b033a4dde5597",
+"https://focus.youth.cn/article/s?signature=KAn0BpeXzg3WkQRaAygmBGUzQQpYcXllAKbawr9G5ZDV6ldJ2N&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36543649&time=1614600743&app_version=2.0.2&sign=d9c2c7feed8875da18d245d05dd5ddb2",
+"https://focus.youth.cn/article/s?signature=k5Bv92bmMjwJEOP78Ydg3NFYZZNRczQQ9v2agxne6rYKdpWVoR&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=29701182&time=1614600750&app_version=2.0.2&sign=5b393952a3dc0d0dce2866b575e47b51",
+"https://focus.youth.cn/article/s?signature=qbBkjWwN2L3nP684eJwb3YsYAAVgcBxxEJr7gRyAEYpXDmeo0O&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36411553&time=1614600757&app_version=2.0.2&sign=3436b5de1d31bb707811d63821ebc17a",
+"https://focus.youth.cn/article/s?signature=qbBkjWwN2L3nP684eNmKXZtYAAVgcBxxEJ37gRyAEYpXDmeo0O&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=29783690&time=1614600763&app_version=2.0.2&sign=87a966d7b95261aca2b03b23532a3155",
+"https://focus.youth.cn/article/s?signature=ML5JYgKNrewq9QO4gM2ZWdU5LL9NTennkWbayGDn2Z0PAvkopB&uid=54043339&phone_code=1a47d558884ac2612a046b67e08664fd&scid=36537885&time=1614600778&app_version=2.0.2&sign=aae840fe6bdedfbb93c4eddb713ac57e"];
 
 let encodearticles;
 
@@ -31,8 +31,7 @@ function randomRange(min, max) { // min最小值，max最大值
 }
 
 !(async() => {
-    //for (let i = randomRange(0, 7); i < articles.length; i++) {
-        let i = randomRange(0, 8);
+    for (let i = 0; i < articles.length; i++) {
         encodearticles = encodeURIComponent(encodeURIComponent(articles[i]));
         nowTime = new Date().getTime();
         wxck = md5(nowTime);
@@ -50,7 +49,7 @@ function randomRange(min, max) { // min最小值，max最大值
         await callback();
         await $.wait(randomRange(2, 4)*1000);
 
-    //}
+    }
 })()
 .catch((e) => $.logErr(e))
 .finally(() => $.done())
