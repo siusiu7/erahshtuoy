@@ -1,10 +1,10 @@
-name: share
+name: share1
 on:
   workflow_dispatch:
   watch:
     types: started
   schedule:
-    - cron: '0 0-3 * * *'
+    - cron: '0 0-4 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,6 +24,3 @@ jobs:
       - name: '运行1'
         run: | 
           node youth1share.js
-      - name: '运行2'
-        run: | 
-          node youth2share.js
